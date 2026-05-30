@@ -1,0 +1,13 @@
+; W610 SW-R8BA024 
+; Heap shift! more stability for patches! 
+; Shifting the heap! more stability patches! 
+; (c) den_po 
+; (p) 2007KrasH 
+; v.64k 
+; info 4 patchmakers: 201A5E14 ... 201B5E13 
+; this info is firmware version dependent 
++44140000 
+ff850: 68480A216860 684988470A21 
+ff9f4: 00501400 F5F3A945 
+195f3f4: 00000000000000000000000000000000 0CB50649002301229203036004300439 
+195f404: 00000000000000000000000000000000 013A002AF9D1286069600CBD00501400

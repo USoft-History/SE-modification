@@ -1,0 +1,9 @@
+;W800 SW-R1BD001
+;Delete default progressbar
+;(c) Se-Developers Group
+;(p) farid
+;(i) request by dna_voluntatis
+44E2CA72: 62F0DBFA C0460020
+44E2CB6E: 62F051FA C0460020
+44E2CB8C: 62F04EFA C0460020
+44E2CB7C: 62F056FA C0460020

@@ -1,0 +1,16 @@
+;w800 R1BD001
+;Ïîëíûé äîñòóï ôàéëîâûì ìåíåäæåğàì íà Java â FS òåëåôîíà
+;Âíèìàíèå! Óäàëèâ/ïåğåìåñòèâ íóæíûå ôàéëû, âû ìîæåòå ëèøèòü ğàáîòîñïîñîáíîñòè òåëåôîí!
+;Full access to file managers on Java in FS phone
+;Warning! Having removed/having moved the necessary files, you can deprive with working capacity phone!
+;© Mobilefree.ru
+;© In-com Software
++44020000
+117AAE8: 44C51E44 54BD1E44 ; .-> "/tpa/user/image" -> "/tpa/preset"
+117AAF8: 08C61E44 88C41E44 ; |-> "/tpa/user/video" -> "/tpa/user"
+117AAF0: 9CC41E44 E8C31E44 ; |-> "/tpa/user/audio" -> "/tpa/system"
+117AB00: C8C51E44 B8BD3F44 ; "-> "/tpa/user/other" -> /smsdata/messaging"
+3F757A: 73006F0075006E00640073002F 730079007300740065006D002F ; "sounds/" -> "tpa/system/"
+3F7590: 76006900640065006F0073002F 75007300650072002F00000000 ; "videos/" -> "tpa/user/"
+3F7560: 700069006300740075007200650073002F 7000720065007300650074002F00000000 ; "pictures/" -> "tpa/preset/"
+26CA70: 63003A002F006F0074006800650072002F000000 63003A002F0073006D0073002F00000000000000 ;other/" -> "c:/sms/"

@@ -1,0 +1,16 @@
+;W200 SW-R4HA014 
+;Полный доступ файловым менеджерам на яве в FS телефона 
+;Внимание! Удалив/переместив нужные файлы, вы можете лишить работоспособности телефон! 
+;Full access to file managers on Java in FS phone 
+;Attention! Having removed/having moved the necessary files, you can deprive with working capacity phone! 
+;ver.1 
+;© mobilefree.ru 
+;(p) ZEN 
+4447BF7C: 700069006300740075007200650073002F 73006D00730064006100740061002F0000 ; "pictures/" -> "smsdata/" 
+4447BFE0: 0C835B44 40815B44; -> "/smsdata/messaging" 
+4447BF6C: 73006F0075006E00640073002F 730079007300740065006D002F ; "sounds/" -> "system/" 
+4447BFEC: 8C825B44 80765B44; "/usb/audio" -> "/system/settings" 
+4447BF5C: 76006900640065006F0073002F 7400700061002F000000000000 ; "videos/" -> "tpa/" 
+4447BFF8: E8835B44 B6745B44 ; "/usb/video" -> "/tpa" 
+4447BF9E: 6F0074006800650072002F 7500730062002F00000000 ; "other/" -> "usb/" 
+4447C004: 9A835B44 82825B44; "/usb/other" -> "/usb"

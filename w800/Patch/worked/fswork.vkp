@@ -1,0 +1,18 @@
+;W800 SW-R1BD001 
+ ;Улучшеная работа с файлами и папками 
+ ;Improved work with files and folders 
+ ;Увеличение имени новой папки до 128 символов (было 20) 
+ ;Увеличение имени переименовыванной папки до 128 символов (было 20) 
+ ;Увеличение перемеинованного файла до 128 символов (было 20) 
+ ;The Increase the name of the new folder before 128 symbols (was 20) 
+ ;The Increase the name of the renamed folder before 128 symbols (was 20) 
+ ;The Increase the name of the renamed file before 128 symbols (was 20) 
+ ;Ver 2.0 
+ ;© mobilefree.ru 
+ ;(P) HierOS 
+ 450EF0b8: 1422 8022 
+ 450ED11E: 1422 8022 
+ 450EDDa0: 1422 8022 
+ 450EF064: 1528 8128 
+ ;Исправлен баг при перемещении в папках 
+ 450EC208: 1428 8028

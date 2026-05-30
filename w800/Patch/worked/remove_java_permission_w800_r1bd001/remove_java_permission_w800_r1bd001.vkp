@@ -1,0 +1,7 @@
+;W800 SW-R1BD001
+;Игнорирование "Полномочий" для явы
+;remove java security restrictions
+;(с) the_laser
+;(p) Yar
+4508B91E: 01D0 01E0
+4508B924: 00 01

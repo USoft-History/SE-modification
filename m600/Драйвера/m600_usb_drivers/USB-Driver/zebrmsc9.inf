@@ -1,0 +1,164 @@
+;*****************************************************************************
+;
+; Name:  zebrmsc9.inf
+;
+; Function:
+;	Install the Sony Ericsson mRouter Port (WDM)
+;
+; Copyright (c) 2006 MCCI 
+;
+; MCCI is a registered trademark of Moore Computer Consultants, Inc
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; Moore Computer Consultants, Inc..
+;
+;*****************************************************************************
+
+[Version]
+signature="$CHICAGO$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=02/24/2006, 4.38.3.116
+CatalogFile=zebrmdmc.cat
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+;   Change A:\ to source drive (or omit to always (?) be prompted)
+;-----------------------------------------------------------------------------
+[SourceDisksNames]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+;	having the tagfile non-null seems to help...
+1=%DiskString%,"zebrmdmc.sys",,
+
+[SourceDisksFiles]
+; filename = diskid[,[ subdir][, size]]
+zebrmdmc.sys = 1
+zebrcr.sys = 1
+zebrvcr.vxd = 1
+zebrcm95.sys = 1
+zebrcmnt.sys = 1
+zebrcomm.vxd = 1
+zebrvcd.vxd = 1
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir          = 11                    ; LDID_SYS
+
+;-----------------------------------------------------------------------------
+; Table of Contents
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%MCCI%=MCCI
+
+;-----------------------------------------------------------------------------
+; Device-by-device entries
+;-----------------------------------------------------------------------------
+[MCCI]
+%Device1%=Install.1,USB\VID_0FCE&PID_D030&MI_01&SCE&OS_9X
+%Device2%=Install.2,USB\VID_0FCE&PID_D031&MI_01&SCE&OS_9X
+
+
+;-----------------------------------------------------------------------------
+; Installation instructions
+;-----------------------------------------------------------------------------
+
+[Install.1]
+AddReg = SEMC.AddReg, SEMC.W95.AddReg, SEMC.W95.AddReg.1
+CopyFiles = CopyFiles, CopyFiles.W95, CopyFiles.sys, CopyFiles.W95.sys, CopyFiles.W95.Inf
+DriverVer=02/24/2006, 4.38.3.116
+
+[SEMC.W95.AddReg.1]
+HKR,,CrGuid,,{AA8C6535-308B-4292-BC33-99F5E488DECE}
+
+[Install.2]
+AddReg = SEMC.AddReg, SEMC.W95.AddReg, SEMC.W95.AddReg.2
+CopyFiles = CopyFiles, CopyFiles.W95, CopyFiles.sys, CopyFiles.W95.sys, CopyFiles.W95.Inf
+DriverVer=02/24/2006, 4.38.3.116
+
+[SEMC.W95.AddReg.2]
+HKR,,CrGuid,,{AA8C6534-308B-4292-BC33-99F5E488DECE}
+
+
+CopyFiles	= CopyFiles, CopyFiles.W95, CopyFiles.sys, CopyFiles.W95.sys
+
+
+;-----------------------------------------------------------------------------
+;  Registry
+;-----------------------------------------------------------------------------
+
+; common registry entries 
+[SEMC.AddReg]
+HKR,,NTMPDriver,,zebrmdmc.sys
+HKR,,CRUpperDescription,,%UpperDescription%
+HKR,,DisableCommPortRegistration, 0x10001, 01,00,00,00
+HKR,,InitialBaudRate, 0x10001, 00,C2,01,00			;115200 initial baud rate
+HKR,,InitialLineControl,, "8N1"					;8-bits, No parity, 1 stop bit
+HKR,,EnableCR1146, 0x10001, 01,00,00,00
+
+; only for Win95....
+[SEMC.W95.AddReg]
+HKR,,DevLoader,,*ntkern
+
+
+;-----------------------------------------------------------------------------
+;  Copy lists
+;-----------------------------------------------------------------------------
+[CopyFiles]
+
+[CopyFiles.W95]
+zebrvcr.vxd
+zebrcomm.vxd
+zebrvcd.vxd
+
+[CopyFiles.sys]
+zebrmdmc.sys
+zebrcr.sys
+
+[CopyFiles.W95.sys]
+zebrcm.sys,zebrcm95.sys
+zebrcm95.sys
+zebrcmnt.sys
+
+[Copyfiles.W95.inf]
+
+
+
+;-----------------------------------------------------------------------------
+; STRINGS
+;-----------------------------------------------------------------------------
+[Strings]
+
+;BEGIN ENG - US English Strings
+Provider = "Sony Ericsson Mobile Communications AB"
+MCCI = "Sony Ericsson Mobile Communications AB"
+DiskString = "Sony Ericsson mRouter Port Installation Disk"
+
+UpperDescription = "Sony Ericsson mRouter Port (WDM)"
+
+Device1 = "Sony Ericsson P990 PC-Connect Controller"
+Device2 = "Sony Ericsson M600 PC-Connect Controller"
+
+
+CustomerDataPath = "Sony Ericsson"
+DriverSet = "Sony Ericsson Symbian 9 Drivers"
+UninstallFile = "ZEBRUninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+
+;-----------------------------------------------------------------------------
+; The following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+
+;*** end of file ***

@@ -1,0 +1,14 @@
+;W800 SW-R1BD001
+;
+;ELFPack v1.0 (c) Hussein
+;SWI_Hook (c) Rst7/CBSIE
+;ElfLoader (c)2007 by Rst7/CBSIE, BoBa, Kren
+;
+
++44020000
+;если установленна "тотальная замена графики", эти 4 строки закоментировать
+;comment these lines when "total graphics replacement" is installed
+00AA8F48: 90 A0
+00AA8FD0: 90 A0
+00AA9060: 90 A0
+00AA92C0: 90 A0

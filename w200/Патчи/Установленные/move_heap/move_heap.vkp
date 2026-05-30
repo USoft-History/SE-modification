@@ -1,0 +1,13 @@
+;W200 SW-R4HA014 
+;heap shift! more stability for patches! 
+;сдвиг кучи! больше стабильности патчам! 
+;©den_po 
+;(p) ZEN 
+;v.64k 
+;info 4 patchmakers: 4C2662A4...4C2762A3 
+;this info is firmware version dependent 
++44140000 
+ce1114: 7E486860 7E498847 
+ce1310: 00301100 1DF88444 
+70f81c: 637863313235303731395F47454E4552 0CB50649002301229203036004300439 
+70f82c: 49435F4D455C4941522D41524D375C73 013A002AF9D1286069600CBD00301100

@@ -1,0 +1,8 @@
+;W200 R4HA014
+;Игнорирование "Полномочий" для явы
+;remove java security restrictions
+;(c)the_laser
+;(p) Adrian. Top Sony Team
++44140000
+1290B02: 01D0 01E0
+1290B08: 00 01

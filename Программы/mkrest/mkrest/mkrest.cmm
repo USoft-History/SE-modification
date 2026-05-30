@@ -1,0 +1,75 @@
+#pragma option w32c
+#jumptomain NONE
+#include <windows.h>
+#include "mystart.hmm"
+#include "myprintf.h--"
+#define printf myprintf
+#include "msvcrt.h--"
+#include <filez.h-->
+byte header=FROM"header.bin";
+
+byte buff[512*1024];
+main()
+{
+  int f,fs;
+  int o;
+  char tmp[MAX_PATH];
+  int rsize=128*1024;
+  int nblocks;
+  int i,j;
+  int offset;
+  dword a[2];
+
+  parsecmdline();
+  printf("makerest by den_po\n");
+  if(argc<1)printf("need a filename\n");
+  else
+  {
+    if(f=readfile(argv[4],#fs)==-1)printf("can't read %s\n",argv[4]);
+    else
+    if(DSWORD[f]!=0xBEBA)printf("can't process this file\n");
+    else
+    if(DSDWORD[f+0x10]>49)printf("bad cid (%d)\n",DSDWORD[f+0x10]);
+    else
+    {
+      nblocks=DSDWORD[f+0x2E8];
+
+      if(DSDWORD[f+nblocks+0x380]&0xFFFFFF>=0x140000)rsize=256*1024;
+
+      if(DSDWORD[f+0x2EC]==0x10000)
+      {
+        wsprintf(#tmp,"%s.rest.mbn",argv[4]);
+        o=create(#tmp,0);
+        rsize/=0x10000;
+        rsize*=0x10008;
+        write(o,f,nblocks+0x380+rsize);
+        close(o);
+        printf("file %s saved.\nyou can use XS++ to flash it\n",#tmp);
+      }else
+      {
+        FillMemory(#buff,sizeof(buff),-1);
+        i=nblocks+0x380+f;
+        DSDWORD[#header+0x2E8]=rsize/0x10000;
+        offset=DSDWORD[i];
+        while(DSDWORD[i]-offset<rsize)
+        {
+          CopyMemory(DSDWORD[i]-offset+#buff,i+8,DSDWORD[i+4]);
+          i+=DSDWORD[i+4]+8;
+        }
+        wsprintf(#tmp,"%s.rest.bin",argv[4]);
+        o=create(#tmp,0);
+        write(o,#header,DSDWORD[#header+0x2E8]+0x380);
+        a[4]=0x10000;
+        for(a[0]=offset;a[0]-offset<rsize;a[0]+=0x10000)
+        {
+          write(o,#a,8);
+          write(o,a[0]-offset+#buff,a[4]);
+        }
+        close(o);
+        printf("file %s saved.\nyou can use SEFP to flash it\n",#tmp);
+      }
+    }
+  }
+  printf("\npress enter\n");
+  gets(#buff);
+}
